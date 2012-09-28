@@ -6,6 +6,10 @@
 > return will be publicly released in a later version of the Census "planning
 > database" containing updated demographic data.
 
+## Data Cleaning
+**State_name ambiguity**:
+`sed -e "s/District of Co/District of Colu/;" data/test_filev1.csv > data/test_filev1.clean.csv`
+
 ## Well-correlated columns:
 
 * State
