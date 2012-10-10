@@ -1,6 +1,18 @@
+wmae <- function(a, p, w) {
+    return(sum(abs(a-p)*w)/sum(w))
+}
+
+appendNAs <- function(dataset, cols) {
+  #append_these = data.frame( is.na(dataset[, cols] ))
+  #names(append_these) = paste(names(append_these), "NA", sep = "_")
+  #dataset = cbind(dataset, append_these)
+  dataset[is.na(dataset)] = -1
+  return(dataset)
+}
+
 print('Loading datasets...')
-census.data <- read.csv('data/training_filev1.csv')
-test.census.data <- read.csv('data/test_filev1.clean.csv')
+census.data <- read.csv('data/training.clean.csv')
+test.census.data <- read.csv('data/test.clean.csv')
 
 print('Converting types...')
 for (i in 9:ncol(census.data)) {
@@ -13,3 +25,7 @@ for (i in 9:ncol(test.census.data)) {
 
 predictors = c(names(census.data)[3],
                names(census.data)[9:(ncol(census.data)-2)])
+
+print('Interpolating NA values and appended NA bools...')
+census.data <- appendNAs(census.data, 9:ncol(census.data))
+test.census.data <- appendNAs(test.census.data, 9:ncol(test.census.data))

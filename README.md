@@ -9,6 +9,7 @@
 ## Data Cleaning
 **State_name ambiguity**:
 `sed -e "s/District of Co/District of Colu/;" data/test_filev1.csv > data/test_filev1.clean.csv`
+**Currency columns**
 
 ## Well-correlated columns:
 
